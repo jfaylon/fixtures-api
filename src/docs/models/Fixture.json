@@ -1,0 +1,56 @@
+{
+  "Fixture": {
+    "type": "object",
+    "properties": {
+      "tournamentId": {
+        "type": "integer"
+      },
+      "homeTeamId": {
+        "type": "integer"
+      },
+      "awayTeamId": {
+        "type": "integer"
+      },
+      "matchDateTime": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "matchStatus": {
+        "type": "string",
+        "enum": [
+          "Not Started",
+          "1H",
+          "HT",
+          "2H",
+          "FT",
+          "ET 1H",
+          "HT ET",
+          "ET 2H",
+          "FT AET"
+        ]
+      },
+      "homeTeamScore": {
+        "type": "integer"
+      },
+      "awayTeamScore": {
+        "type": "integer"
+      },
+      "homeTeamPenaltyScore": {
+        "type": "integer"
+      },
+      "awayTeamPenaltyScore": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "tournamentId",
+      "homeTeamId",
+      "awayTeamId",
+      "matchDateTime",
+      "matchStatus",
+      "homeTeamScore",
+      "awayTeamScore"
+    ]
+  }
+}
+  

@@ -1,0 +1,178 @@
+{
+  "/{tournamentId}/fixtures": {
+    "get": {
+      "summary": "Get tournament fixtures",
+      "tags": ["Tournament API"],
+      "description": "Retrieve fixtures for a specific tournament, optionally filtered by date, with pagination support.",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "tournamentId",
+          "schema": {
+            "type": "string"
+          },
+          "required": true,
+          "description": "The ID of the tournament."
+        },
+        {
+          "in": "query",
+          "name": "date",
+          "schema": {
+            "type": "string",
+            "format": "date"
+          },
+          "required": false,
+          "description": "The date for which fixtures are requested. (format: YYYY-MM-DD)"
+        },
+        {
+          "in": "query",
+          "name": "limit",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": false,
+          "description": "The maximum number of fixtures to return. (default: 10)"
+        },
+        {
+          "in": "query",
+          "name": "offset",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": false,
+          "description": "The number of fixtures to skip for pagination. (default: 0)"
+        },
+        {
+          "in": "query",
+          "name": "previous",
+          "schema": {
+            "type": "boolean"
+          },
+          "required": false,
+          "description": "If true, retrieve previous fixtures; if false, retrieve upcoming fixtures (default: false)"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response with tournament fixtures data",
+          "content": {
+            "application/json": {
+              "example": {
+                "code": 0,
+                "data": [
+                  {
+                    "id": 13,
+                    "tournamentId": 2,
+                    "homeTeamId": 1,
+                    "awayTeamId": 2,
+                    "matchDateTime": "2023-07-10T16:00:00.000Z",
+                    "matchStatus": "Not Started",
+                    "homeTeamScore": 0,
+                    "awayTeamScore": 0,
+                    "homeTeamPenaltyScore": null,
+                    "awayTeamPenaltyScore": null,
+                    "createdAt": "2023-12-04T17:10:25.000Z",
+                    "updatedAt": "2023-12-04T17:10:25.000Z",
+                    "Tournament": {
+                      "name": "Tournament 2"
+                    },
+                    "homeTeam": {
+                      "name": "Team 1",
+                      "logoImageLink": null
+                    },
+                    "awayTeam": {
+                      "name": "Team 2",
+                      "logoImageLink": null
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal server error",
+          "content": {
+            "application/json": {
+              "example": {
+                "code": -1,
+                "message": "An error occurred."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/{tournamentId}/calendar": {
+    "get": {
+      "summary": "Get tournament calendar",
+      "tags": ["Tournament API"],
+      "description": "Retrieve the calendar for a specific tournament based on the provided month and year.",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "tournamentId",
+          "schema": {
+            "type": "string"
+          },
+          "required": true,
+          "description": "The ID of the tournament."
+        },
+        {
+          "in": "query",
+          "name": "month",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": false,
+          "description": "The month for which the calendar is requested. If provided, must be accompanied by the 'year' parameter."
+        },
+        {
+          "in": "query",
+          "name": "year",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": false,
+          "description": "The year for which the calendar is requested."
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response with the tournament calendar data.",
+          "content": {
+            "application/json": {
+              "example": {
+                "code": 0,
+                "data": [
+                  "2023-07-10",
+                  "2023-07-20",
+                  "2023-07-30",
+                  "2023-08-09",
+                  "2023-08-19",
+                  "2023-08-29"
+                ]
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal server error.",
+          "content": {
+            "application/json": {
+              "example": {
+                "code": -1,
+                "message": "An error occurred."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
