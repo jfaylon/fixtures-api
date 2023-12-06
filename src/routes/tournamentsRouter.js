@@ -42,7 +42,6 @@ router.get("/:tournamentId/fixtures", async (req, res, next) => {
       offset: Number(offset),
       getPrevious: previousBoolean,
     });
-    console.log(results);
     return res.json(200, {
       code: 0,
       data: results,

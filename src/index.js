@@ -1,7 +1,3 @@
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`)
-// })
-
 require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
