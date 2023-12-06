@@ -110,6 +110,7 @@ It can be found in the `assets/api-documentation.pdf` in the repository
 - This API is only for retrieving data. There are no routes for adding, modifying, or deleting data.
 - Since the authentication/authorisation module is assumed but there is no information about its business rules and its mechanisms, no middleware has been created to utilise such. Thus, this API is unsecure and all users may query the API.
 - New data is added/modified by another module or a direct database change.
+- Tournaments have a yearly season or span across years (2-4 years max) like world cup qualifiers, thus, the list of calendar dates for fixtures will not contain a huge amount of data. Nevertheless, the API of getting the list of calendar dates supports pagination for such along with getting the entire list of dates for the tournament.
 
 ### Tech Limitations and Possible Improvements
 - For the tests, a real MySQL database needs to be used because there is no in-memory MySQL database. I have tried using sqlite for in-memory but there are syntax mismatches particularly the date format.
