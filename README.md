@@ -117,3 +117,5 @@ It can be found in the `assets/api-documentation.pdf` in the repository
 - There may be a better way of handling error objects to identify and differentiate the errors.
 - This has been developed using Node v21.2.0. The application has not yet been tested for older or newer versions.
 - ESLint can be installed for code conventions and improved code cleanliness
+- Extraneous query parameters may be filtered out for better security of the API.
+- As of version 1.0, no Personally Identifiable Information (PII) is stored. As PIIs are added, encryption and/or masking of data will be implemented.
