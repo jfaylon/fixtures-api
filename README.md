@@ -101,6 +101,10 @@ Example:
 http://localhost:3000/api-docs
 ```
 
+OR
+
+It can be found in the `assets/api-documentation.pdf` in the repository
+
 ## Notes
 
 ### Assumptions
