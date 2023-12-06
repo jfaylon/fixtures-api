@@ -92,12 +92,23 @@
             }
           }
         },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "example": {
+                "code": -1,
+                "message": "Invalid Date"
+              }
+            }
+          }
+        },
         "500": {
           "description": "Internal server error",
           "content": {
             "application/json": {
               "example": {
-                "code": -1,
+                "code": -2,
                 "message": "An error occurred."
               }
             }
@@ -161,12 +172,23 @@
             }
           }
         },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "example": {
+                "code": -1,
+                "message": "Invalid month"
+              }
+            }
+          }
+        },
         "500": {
           "description": "Internal server error.",
           "content": {
             "application/json": {
               "example": {
-                "code": -1,
+                "code": -2,
                 "message": "An error occurred."
               }
             }
