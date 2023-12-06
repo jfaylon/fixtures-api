@@ -140,7 +140,7 @@
             "format": "int32"
           },
           "required": false,
-          "description": "The month for which the calendar is requested. If provided, must be accompanied by the 'year' parameter."
+          "description": "The month (0-11) (0 = January, 1 = February, 2 = March, ...) for which the calendar is requested. If provided, must be accompanied by the 'year' parameter."
         },
         {
           "in": "query",
