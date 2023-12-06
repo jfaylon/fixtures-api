@@ -108,7 +108,7 @@ It can be found in the `assets/api-documentation.pdf` in the repository
 
 ### Assumptions
 - This API is only for retrieving data. There are no routes for adding, modifying, or deleting data.
-- Since the authentication module is assumed but there is no information about its business rules and its mechanisms, no middleware has been created to utilise such. Thus, this API is unsecure and all users may query the API.
+- Since the authentication/authorisation module is assumed but there is no information about its business rules and its mechanisms, no middleware has been created to utilise such. Thus, this API is unsecure and all users may query the API.
 - New data is added/modified by another module or a direct database change.
 
 ### Tech Limitations and Possible Improvements
