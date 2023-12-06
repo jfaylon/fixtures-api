@@ -71,13 +71,13 @@ npm run seed:create
 ## Running the application
 There are 2 ways:
 
-- If you want to restart the application based on any change in the code:
+- If you want to restart the application based on any change in the code (Only for development purposes):
 
 ```
 npm run start:dev
 ```
 OR
--  The normal way which requires restart for every change:
+-  The normal way which requires restart for every change (Ideal for production environment):
 
 ```
 npm run start
