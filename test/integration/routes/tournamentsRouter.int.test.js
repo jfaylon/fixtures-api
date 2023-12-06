@@ -5,6 +5,59 @@ describe("#TournamentsRouter", () => {
   afterEach(async () => {
     jest.restoreAllMocks();
   });
+
+  describe("GET /api/tournaments", () => {
+    it("should return a list of tournaments based on the test data", async () => {
+      await request(app)
+        .get("/api/tournaments")
+        .expect(200)
+        .then((response) => {
+          expect(response.body.code).toEqual(0);
+          expect(response.body.data.length > 0).toEqual(true);
+        });
+    });
+    it("should return a bad request due to invalid limit", async () => {
+      await request(app)
+        .get("/api/tournaments?limit=a")
+        .expect(400)
+        .then((response) => {
+          expect(response.body.code).toEqual(-1);
+          expect(response.body.message).toEqual("Invalid limit");
+        });
+    });
+    it("should return a bad request due to invalid offset", async () => {
+      await request(app)
+        .get("/api/tournaments?offset=a")
+        .expect(400)
+        .then((response) => {
+          expect(response.body.code).toEqual(-1);
+          expect(response.body.message).toEqual("Invalid offset");
+        });
+    });
+    it("should return a bad request due to invalid limit and offset", async () => {
+      await request(app)
+        .get("/api/tournaments?limit=a&offset=a")
+        .expect(400)
+        .then((response) => {
+          expect(response.body.code).toEqual(-1);
+          expect(response.body.message).toEqual("Invalid limit, Invalid offset");
+        });
+    });
+    it("should return a 500 error due to unexpected error in service", async () => {
+      jest
+        .spyOn(tournamentsService, "getTournaments")
+        .mockRejectedValue(new Error("test message"));
+
+      await request(app)
+        .get("/api/tournaments")
+        .expect(500)
+        .then((response) => {
+          expect(tournamentsService.getTournaments).toHaveBeenCalled();
+          expect(response.body.code).toEqual(-2);
+          expect(response.body.message).toEqual("test message");
+        });
+    });
+  });
   describe("GET /api/tournaments/:tournamentId/fixtures", () => {
     it("should return a list of fixtures based on the test fixtures", async () => {
       await request(app)

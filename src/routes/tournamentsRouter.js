@@ -2,13 +2,46 @@ const express = require("express");
 const moment = require("moment");
 const tournamentsService = require("../services/tournamentsService");
 const {
-  isOptionalPositiveNumber,
+  isPositiveOrZeroInteger,
   convertStringToBoolean,
   isBoolean,
   isOptionalPositiveInteger,
 } = require("../utils/utils");
 
 const router = express.Router();
+
+router.get("/", async (req, res, next) => {
+  const { limit = 10, offset = 0 } = req.query;
+  const errors = [];
+  if (!isPositiveOrZeroInteger(Number(limit))) {
+    errors.push("Invalid limit");
+  }
+  if (!isPositiveOrZeroInteger(Number(offset))) {
+    errors.push("Invalid offset");
+  }
+  if (errors.length > 0) {
+    return res.json(400, {
+      code: -1,
+      message: errors.join(", "),
+    });
+  }
+  try {
+    const results = await tournamentsService.getTournaments({
+      limit: Number(limit),
+      offset: Number(offset),
+    });
+    return res.json(200, {
+      code: 0,
+      data: results,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.json(500, {
+      code: -2,
+      message: error.message,
+    });
+  }
+});
 
 router.get("/:tournamentId/fixtures", async (req, res, next) => {
   const { tournamentId } = req.params;

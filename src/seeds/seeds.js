@@ -1,6 +1,5 @@
 require("dotenv").config();
 const sequelize = require("../sequelize");
-// us
 const Team = require("../models/Team");
 const Tournament = require("../models/Tournament");
 const Fixture = require("../models/Fixture");

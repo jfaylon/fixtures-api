@@ -1,5 +1,76 @@
 {
-  "/{tournamentId}/fixtures": {
+  "/api/tournaments": {
+    "get": {
+      "summary": "Get list of tournaments",
+      "tags": ["Tournament API"],
+      "description": "Retrieve list of tournaments with pagination support.",
+      "parameters": [
+        {
+          "in": "query",
+          "name": "limit",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": false,
+          "description": "The maximum number of tournaments to return. (default: 10)"
+        },
+        {
+          "in": "query",
+          "name": "offset",
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": false,
+          "description": "The number of tournaments to skip for pagination. (default: 0)"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful response with the tournament data.",
+          "content": {
+            "application/json": {
+              "example": {
+                "code": 0,
+                "data": [
+                  {
+                    "id": 2,
+                    "name": "Tournament 2",
+                    "createdAt": "2023-12-06T17:07:51.000Z",
+                    "updatedAt": "2023-12-06T17:07:51.000Z"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad Request",
+          "content": {
+            "application/json": {
+              "example": {
+                "code": -1,
+                "message": "Invalid offset"
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal server error",
+          "content": {
+            "application/json": {
+              "example": {
+                "code": -2,
+                "message": "An error occurred."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/api/tournaments/{tournamentId}/fixtures": {
     "get": {
       "summary": "Get tournament fixtures",
       "tags": ["Tournament API"],
@@ -117,7 +188,7 @@
       }
     }
   },
-  "/{tournamentId}/calendar": {
+  "/api/tournaments/{tournamentId}/calendar": {
     "get": {
       "summary": "Get tournament calendar",
       "tags": ["Tournament API"],

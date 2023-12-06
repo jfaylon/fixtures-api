@@ -1,11 +1,41 @@
 const moment = require("moment");
 const tournamentService = require("../../../src/services/tournamentsService");
 const Fixture = require("../../../src/models/Fixture");
+const Tournament = require("../../../src/models/Tournament");
 
 describe("#tournamentService", () => {
+  describe("#getTournaments", () => {
+    afterEach(async () => {
+      jest.restoreAllMocks();
+    });
+    it("should call Tournament.findAll", async () => {
+      const tournamentSpy = jest
+        .spyOn(Tournament, "findAll")
+        .mockResolvedValue([]);
+      await tournamentService.getTournaments({});
+      expect(tournamentSpy).toHaveBeenCalledWith(
+        {
+          limit: 10,
+          offset: 0,
+        },
+        { raw: true }
+      );
+    });
+    it("should throw error", async () => {
+      jest
+        .spyOn(Tournament, "findAll")
+        .mockRejectedValue(new Error("error message"));
+      expect.assertions(1);
+      try {
+        await tournamentService.getTournaments({});
+      } catch (error) {
+        expect(error.message).toEqual("error message");
+      }
+    });
+  });
   describe("#getTournamentFixtures", () => {
     afterEach(async () => {
-      await jest.restoreAllMocks();
+      jest.restoreAllMocks();
     });
     it("should call Fixture.findAll without matchDateTime", async () => {
       const fixtureSpy = jest.spyOn(Fixture, "findAll").mockResolvedValue([]);

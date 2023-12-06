@@ -5,6 +5,20 @@ const Team = require("../models/Team");
 const { Sequelize, Op } = require("sequelize");
 const { isPositiveOrZeroInteger } = require("../utils/utils");
 
+const getTournaments = async ({ limit = 10, offset = 0 }) => {
+  const query = {
+    limit,
+    offset,
+  };
+  try {
+    const result = await Tournament.findAll(query, { raw: true });
+    return result;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 const getTournamentFixtures = async ({
   tournamentId,
   date,
@@ -111,6 +125,7 @@ const getTournamentFixturesCalendar = async ({ tournamentId, month, year }) => {
 };
 
 module.exports = {
+  getTournaments,
   getTournamentFixtures,
   getTournamentFixturesCalendar,
 };
