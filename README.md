@@ -45,7 +45,6 @@ MYSQL_PASSWORD=root
 MYSQL_HOST=localhost
 NODE_ENV=development
 ADD_TEST_DATA=true
-=true
 ```
 
 For unit/integration tests, please add your `test.env` file under the `tests/global` folder.
