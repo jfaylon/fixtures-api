@@ -14,6 +14,8 @@ const options = {
   apis: ["**/routes/*.js"],
 };
 
+console.log(JSON.stringify(options))
+
 const specs = swaggerJsdoc(options);
 
 module.exports = specs;

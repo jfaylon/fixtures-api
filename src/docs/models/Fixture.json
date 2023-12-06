@@ -3,20 +3,25 @@
     "type": "object",
     "properties": {
       "tournamentId": {
+        "description": "Internal ID of the tournament",
         "type": "integer"
       },
       "homeTeamId": {
+        "description": "Internal ID of the home team",
         "type": "integer"
       },
       "awayTeamId": {
+        "description": "Internal ID of the away team",
         "type": "integer"
       },
       "matchDateTime": {
         "type": "string",
+        "description": "Date and Time of the match",
         "format": "date-time"
       },
       "matchStatus": {
         "type": "string",
+        "description": "Status of the match",
         "enum": [
           "Not Started",
           "1H",
@@ -30,15 +35,19 @@
         ]
       },
       "homeTeamScore": {
+        "description": "Home team's score",
         "type": "integer"
       },
       "awayTeamScore": {
+        "description": "Away team's score",
         "type": "integer"
       },
       "homeTeamPenaltyScore": {
+        "description": "Home team's penalty score",
         "type": "integer"
       },
       "awayTeamPenaltyScore": {
+        "description": "Away team's penalty score",
         "type": "integer"
       }
     },

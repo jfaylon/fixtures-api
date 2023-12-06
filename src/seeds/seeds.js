@@ -7,7 +7,7 @@ const Fixture = require("../models/Fixture");
 const { createTestFixtures } = require("./seeds.script");
 const { Sequelize } = require("sequelize");
 
-const { MYSQL_DB_NAME, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_HOST } =
+const { MYSQL_DB_NAME, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_HOST, ADD_TEST_DATA } =
   process.env;
 
 const createDatabase = async () => {
@@ -26,7 +26,11 @@ const createDatabase = async () => {
   await Team.sync({ alter: true });
   await Tournament.sync({ alter: true });
   await Fixture.sync({ alter: true });
-  const result = await createTestFixtures();
-  console.log("fixtures created");
+  console.log("database created");
+  if (ADD_TEST_DATA?.toLowerCase() === "true") {
+    await createTestFixtures();
+    console.log("fixtures created");
+  }
+  
   process.exit(0);
 })();

@@ -1,0 +1,31 @@
+{
+  "Team": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Internal ID of the team",
+        "type": "integer"
+      },
+      "name": {
+        "description": "Name of the team",
+        "type": "string"
+      },
+      "logoImageLink": {
+        "description": "URL of the team's logo",
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "updatedAt": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    "required": [
+      "id",
+      "name"
+    ]
+  }
+}

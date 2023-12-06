@@ -1,0 +1,27 @@
+{
+  "Tournament": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Internal ID of the tournament",
+        "type": "integer"
+      },
+      "name": {
+        "description": "Name of the tournament",
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "updatedAt": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    "required": [
+      "id",
+      "name"
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../sequelize"); // Replace with the correct path to your Sequelize instance
+const sequelize = require("../sequelize");
 const Tournament = sequelize.define(
   "Tournament",
   {

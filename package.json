@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand --detectOpenHandles",
+    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles",
     "start": "node src/index",
     "start:dev": "nodemon src/index",
     "seed:create": "node src/seeds/seeds"

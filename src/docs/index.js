@@ -1,4 +1,7 @@
 const fixtureModelSwagger = require("./models/Fixture.json");
+const teamModelSwagger = require("./models/Team.json")
+const tournamentModelSwagger = require("./models/Tournament.json")
+
 const tournamentsRouterSwagger = require("./routes/tournamentsRouter.json");
 
 module.exports = {
@@ -10,6 +13,8 @@ module.exports = {
   ],
   components: {
     schemas: {
+      ...teamModelSwagger,
+      ...tournamentModelSwagger,
       ...fixtureModelSwagger
     },
   },
