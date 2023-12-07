@@ -104,6 +104,24 @@ describe("#TournamentsRouter", () => {
           expect(response.body.message).toEqual("Invalid Previous");
         });
     });
+    it("should return Invalid limit", async () => {
+      await request(app)
+        .get("/api/tournaments/0/fixtures?limit=a")
+        .expect(400)
+        .then((response) => {
+          expect(response.body.code).toEqual(-1);
+          expect(response.body.message).toEqual("Invalid limit");
+        });
+    });
+    it("should return Invalid offset", async () => {
+      await request(app)
+        .get("/api/tournaments/0/fixtures?offset=a")
+        .expect(400)
+        .then((response) => {
+          expect(response.body.code).toEqual(-1);
+          expect(response.body.message).toEqual("Invalid offset");
+        });
+    });
     it("should return a 500 error due to unexpected error in service", async () => {
       jest
         .spyOn(tournamentsService, "getTournamentFixtures")

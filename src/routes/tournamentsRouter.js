@@ -60,6 +60,12 @@ router.get("/:tournamentId/fixtures", async (req, res, next) => {
     if (!isBoolean(previousBoolean)) {
       errors.push("Invalid Previous");
     }
+    if (!isPositiveOrZeroInteger(Number(limit))) {
+      errors.push("Invalid limit");
+    }
+    if (!isPositiveOrZeroInteger(Number(offset))) {
+      errors.push("Invalid offset");
+    }
     if (errors.length > 0) {
       return res.json(400, {
         code: -1,
