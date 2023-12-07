@@ -120,3 +120,4 @@ It can be found in the `assets/api-documentation.pdf` in the repository
 - ESLint can be installed for code conventions and improved code cleanliness
 - Extraneous query parameters may be filtered out for better security of the API.
 - As of version 1.0, no Personally Identifiable Information (PII) is stored. As PIIs are added, encryption and/or masking of data will be implemented.
+- As an improvement for deployment, dockerisation of the application can be implemented.
